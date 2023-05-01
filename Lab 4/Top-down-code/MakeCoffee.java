@@ -15,18 +15,18 @@ static Scanner scan = new Scanner(System.in);
     public double GetCoffeeWater() {return this.water;}
 
     public void SetIngredient(){   //Calling for Filling Ingredient...
-        System.out.println("\nFilling...");
+        System.out.print("\nFilling..."+"\n");
         this.coffee_powder = 500.0;
         this.milk = 1;
         this.water= 2;
-        System.out.println("Filling Completed.");
+        System.out.print("Filling Completed."+"\n");
     }
-    private void GetIngredient(){   //To Get Status
-            System.out.println("Available Coffee Power(Gram) "+String.format("%.1f",this.coffee_powder));
-            System.out.println("Available Milk(Liter) "+String.format("%.1f", this.milk));
-            System.out.println("Available Water(Liter) "+String.format("%.1f", this.water));
+    public void GetIngredient(){   //To Get Status
+            System.out.print("Available Coffee Power(Gram) "+String.format("%.1f",this.coffee_powder)+"\n");
+            System.out.print("Available Milk(Liter) "+String.format("%.1f", this.milk)+"\n");
+            System.out.print("Available Water(Liter) "+String.format("%.1f", this.water)+"\n");
     }
-    private void CleanMachine(){    //Initialization with Null In order to Clean Machine
+    public void CleanMachine(){    //Initialization with Null In order to Clean Machine
         System.out.println("\nCleaning Machine...");
         this.coffee_powder = 0;
         this.milk = 0;
