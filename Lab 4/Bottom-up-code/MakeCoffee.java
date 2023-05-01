@@ -33,11 +33,11 @@ static Scanner scan = new Scanner(System.in);
         this.water= 0;
         System.out.println("Cleaning Completed.");
     }
-    private void makecoffee(){  //Coffee Selection Menu
+    public void makecoffee(){  //Coffee Selection Menu
         System.out.println("\n ------------------ ");
         System.out.println("|   Select Type:   |\n ------------------ \n| 1:  Black Coffee |\n| 2:  Milk Coffee  |\n| 0   to Discard   |");
         System.out.println(" ------------------ \n");
-        char t = scan.next().charAt(0);
+        char t = scan.nextLine().charAt(0);
         switch(t){
             case '1':
                 this.BlackCoffee();     //Call to BlackCoffee Method
