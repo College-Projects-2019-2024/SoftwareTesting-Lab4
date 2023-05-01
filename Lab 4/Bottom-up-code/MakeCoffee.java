@@ -135,5 +135,6 @@ public class MakeCoffee{
             System.out.println("Shutting Down...\n");
         }else
             System.out.println("Shutting Down...\n");
+        scan.close();
     }
 }
