@@ -37,7 +37,8 @@ static Scanner scan = new Scanner(System.in);
         System.out.println("\n ------------------ ");
         System.out.println("|   Select Type:   |\n ------------------ \n| 1:  Black Coffee |\n| 2:  Milk Coffee  |\n| 0   to Discard   |");
         System.out.println(" ------------------ \n");
-        char t = scan.nextLine().charAt(0);
+        Scanner s = new Scanner(System.in);
+        char t = s.nextLine().charAt(0);
         switch(t){
             case '1':
                 this.BlackCoffee();     //Call to BlackCoffee Method
@@ -48,6 +49,7 @@ static Scanner scan = new Scanner(System.in);
             case '0':
                 break;
         }
+        s.close();
     }
     public void BlackCoffee(){
         if(this.coffee_powder >= 10 && this.water >= 0.2){
@@ -92,11 +94,12 @@ static Scanner scan = new Scanner(System.in);
         System.out.println("\nCurrent Status: ");
         this.GetIngredient();
         boolean t = true;
+        Scanner s = new Scanner(System.in);
         while(t){
             System.out.println("\n -------------------------------- ");
             System.out.println("|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |");
             System.out.println(" -------------------------------- \n\n");
-            char c = CoffeeMachine.scan.next().charAt(0);
+            char c = s.next().charAt(0);
             switch(c){
                 case '1': 
                     System.out.println("------------- Status ------------");
@@ -116,11 +119,12 @@ static Scanner scan = new Scanner(System.in);
                     System.out.println("\nWe Have Made "+this.Coffee_Count+" Coffees.");
                     break;
                 case '6':
-                    System.out.println("\nExiting...\n");
+                    System.out.println("\nExiting...");
                     t = false;
                     break;
             }   
-        } 
+        }
+        s.close(); 
     }
 }
 public class MakeCoffee{
