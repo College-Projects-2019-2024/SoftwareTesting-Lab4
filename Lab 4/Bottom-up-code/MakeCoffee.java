@@ -87,24 +87,24 @@ static Scanner scan = new Scanner(System.in);
         }
     }
     public void start(){    //public Start to accese all private method of this class
-        System.out.println(" ----------------------------------------------------------------");
-        System.out.println("|                   Coffee Machine By Manikant                   |");
-        System.out.println(" ----------------------------------------------------------------");
+        System.out.print(" ----------------------------------------------------------------\n");
+        System.out.print("|                   Coffee Machine By Manikant                   |\n");
+        System.out.print(" ----------------------------------------------------------------\n");
         //System.out.println("Currently We Have Following Operations, Select as your Need:- ");
-        System.out.println("\nCurrent Status: ");
+        System.out.print("\nCurrent Status: \n");
         this.GetIngredient();
         boolean t = true;
         Scanner s = new Scanner(System.in);
         while(t){
-            System.out.println("\n -------------------------------- ");
-            System.out.println("|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |");
-            System.out.println(" -------------------------------- \n\n");
+            System.out.print("\n -------------------------------- \n");
+            System.out.print("|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |\n");
+            System.out.print(" -------------------------------- \n\n\n");
             char c = s.next().charAt(0);
             switch(c){
                 case '1': 
-                    System.out.println("------------- Status ------------");
+                    System.out.print("------------- Status ------------\n");
                     this.GetIngredient();
-                    System.out.println("---------------------------------");
+                    System.out.print("---------------------------------\n");
                     break;
                 case '2':
                     this.SetIngredient();
@@ -119,7 +119,7 @@ static Scanner scan = new Scanner(System.in);
                     System.out.println("\nWe Have Made "+this.Coffee_Count+" Coffees.");
                     break;
                 case '6':
-                    System.out.println("\nExiting...");
+                    System.out.print("\nExiting...\n");
                     t = false;
                     break;
             }   

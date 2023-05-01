@@ -11,8 +11,27 @@ public class StartTest {
    private ByteArrayOutputStream out;
    private String userInput = "";
 
+   String initial = " ----------------------------------------------------------------\n"
+        + "|                   Coffee Machine By Manikant                   |\n"
+        + " ----------------------------------------------------------------\n";
+    
+   String Options =  "\n -------------------------------- \n"
+        + "|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |"
+        + "\n -------------------------------- \n\n\n";
+
+   String Current_status = "";
+
+   String Exit = "\nExiting...\n";
+
+
    @BeforeEach
    void Init() {
+     cm = new CoffeeMachine();
+
+     Current_status = "\nCurrent Status: \n" + "Available Coffee Power(Gram) " + cm.GetCoffeePowder()
+        +"\nAvailable Milk(Liter) " + cm.GetCoffeeMilk() + "\nAvailable Water(Liter) " + cm.GetCoffeeWater()
+        +"\n";
+
       in = new ByteArrayInputStream(userInput.getBytes());
       System.setIn(in);
       out = new ByteArrayOutputStream();
@@ -23,7 +42,6 @@ public class StartTest {
 
    @Test
    public void test1(){
-    cm = new CoffeeMachine();
     userInput = "1\n6";
 
     in = new ByteArrayInputStream(userInput.getBytes());
@@ -31,28 +49,45 @@ public class StartTest {
 
     cm.start();
 
-    String p1 = " ----------------------------------------------------------------\n"
-        + "|                   Coffee Machine By Manikant                   |\n"
-        + " ----------------------------------------------------------------\n";
 
-    String p2 = "\nCurrent Status: \n" + "Available Coffee Power(Gram) " + cm.GetCoffeePowder()
-        +"\nAvailable Milk(Liter) " + cm.GetCoffeeMilk() + "\nAvailable Water(Liter) " + cm.GetCoffeeWater()
-        +"\n";
-
-    String p4 =  "\n -------------------------------- \n"
-        + "|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |"
-        + "\n -------------------------------- \n\n\n";
-
-    String p3 = "------------- Status ------------\n" + "Available Coffee Power(Gram) " + cm.GetCoffeePowder()
+    String var = "------------- Status ------------\n" + "Available Coffee Power(Gram) " + cm.GetCoffeePowder()
         +"\nAvailable Milk(Liter) " + cm.GetCoffeeMilk() + "\nAvailable Water(Liter) " + cm.GetCoffeeWater() +
         "\n---------------------------------\n";
 
-    String p5 = "\nExiting...\n";
+    String actual = out.toString();
+
+    String expected = initial+Current_status+Options+var+Options+Exit;
+
+    assertEquals("Error",expected, actual);
+   }
+
+
+   @Test
+   public void test2(){
+    userInput = "2\n6";
+
+    in = new ByteArrayInputStream(userInput.getBytes());
+    System.setIn(in);
+
+    cm.start();
+
 
     String actual = out.toString();
 
-    String expected = p1+p2+p4+p3+p4+p5;
+    String var = "\nFilling...\n" + "Filling Completed.\n";
+
+    String expected = initial+Current_status+Options+var+Options+Exit;
 
     assertEquals("Error",expected, actual);
+
+    double cmp = cm.GetCoffeePowder();
+    double cmw = cm.GetCoffeeWater();
+    double cmm = cm.GetCoffeeMilk();
+
+    assertEquals("Error", cmp, 500.0,0.0);
+    assertEquals("Error", cmw, 2,0.0);
+    assertEquals("Error", cmm, 1,0.0);
+
+    
    }
 }
