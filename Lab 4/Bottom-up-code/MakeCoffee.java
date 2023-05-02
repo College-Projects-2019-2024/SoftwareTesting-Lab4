@@ -99,7 +99,7 @@ static Scanner scan = new Scanner(System.in);
             System.out.print("\n -------------------------------- \n");
             System.out.print("|1:     Status of Ingredient     |\n -------------------------------- \n|2:      Fill Ingredient         |\n -------------------------------- \n|3:       Clean Machine          |\n -------------------------------- \n|4:        Make Coffee           |\n -------------------------------- \n|5: How many Coffee We have made?|\n -------------------------------- \n|6:        Exit                  |\n");
             System.out.print(" -------------------------------- \n\n\n");
-            char c = s.next().charAt(0);
+            char c = s.nextLine().charAt(0);
             switch(c){
                 case '1': 
                     System.out.print("------------- Status ------------\n");

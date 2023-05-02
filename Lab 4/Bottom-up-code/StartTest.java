@@ -90,4 +90,68 @@ public class StartTest {
 
     
    }
+
+   @Test
+   public void test3() {
+      userInput = "3\n6";
+
+      in = new ByteArrayInputStream(userInput.getBytes());
+      System.setIn(in);
+
+      cm.start();
+
+      double cmp = cm.GetCoffeePowder();
+      double cmw = cm.GetCoffeeWater();
+      double cmm = cm.GetCoffeeMilk();
+
+      assertEquals("Error", cmp, 0.0,0.0);
+      assertEquals("Error", cmw, 0,0.0);
+      assertEquals("Error", cmm, 0,0.0);
+
+   }
+
+   // @Test
+   // public void test4(){
+   //    userInput = "4\n1\n6";
+
+   //    in = new ByteArrayInputStream(userInput.getBytes());
+   //    System.setIn(in);
+
+   //    cm.start();
+   //    cm.SetIngredient();
+
+   //    double cmp = cm.GetCoffeePowder();
+   //    double cmw = cm.GetCoffeeWater();
+   //    double cmm = cm.GetCoffeeMilk();
+   //    int count = cm.GetCoffeeCount();
+
+   //    cm.BlackCoffee();
+
+   //    double Ecmp = cmp - 10;
+   //    double Ecmw = cmw - 0.2;
+   //    double Ecmm = cmm;
+   //    int Ecount = count + 1;
+
+   //    assertEquals("Error", Ecmp, cm.GetCoffeePowder(),0.0);
+   //    assertEquals("Error", Ecmw, cm.GetCoffeeWater(),0.0);
+   //    assertEquals("Error", Ecmm, cm.GetCoffeeMilk(),0.0);
+   //    assertEquals("Error", Ecount, cm.GetCoffeeCount());
+
+   // }
+
+   @Test
+   public void test5(){
+      userInput = "3\n6";
+
+      in = new ByteArrayInputStream(userInput.getBytes());
+      System.setIn(in);
+
+      cm.start();
+      cm.SetIngredient();
+      cm.BlackCoffee();
+
+      int count = cm.GetCoffeeCount();
+
+      assertEquals("Error", 1, count);
+   }
 }
