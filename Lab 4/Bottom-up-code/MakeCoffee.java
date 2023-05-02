@@ -132,7 +132,7 @@ public class MakeCoffee{
         Scanner scan = new Scanner(System.in);
         System.out.println("\nWants to Start Mechine Y or N ?");
         char d;
-        d = scan.next().charAt(0);
+        d = scan.nextLine().charAt(0);
         if(d == 'Y' || d == 'y'){
             CoffeeMachine cm = new CoffeeMachine();     //Instances For CoffeMachine
             cm.start();     //In order to call All Private Method Calling Public mathod
