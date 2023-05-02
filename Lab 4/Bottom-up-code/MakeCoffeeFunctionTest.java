@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public class MakeCoffeeFunctionTest {
    CoffeeMachine cm;
@@ -36,8 +37,9 @@ public class MakeCoffeeFunctionTest {
       double cmw = cm.GetCoffeeWater();
       double cmm = cm.GetCoffeeMilk();
       int count = cm.GetCoffeeCount();
-
-      cm.makecoffee();
+      Scanner f = new Scanner(System.in);
+      cm.makecoffee(f);
+      f.close();
       
       double Ecmp = cmp - 10;
       double Ecmw = cmw - 0.2;
@@ -66,9 +68,9 @@ public class MakeCoffeeFunctionTest {
       double cmw = cm.GetCoffeeWater();
       double cmm = cm.GetCoffeeMilk();
       int count = cm.GetCoffeeCount();
-
-      cm.makecoffee();
-      
+      Scanner f = new Scanner(System.in);
+      cm.makecoffee(f);
+      f.close();
       double Ecmp = cmp - 10;
       double Ecmw = cmw - 0.2;
       double Ecmm = cmm - 0.4;
@@ -94,9 +96,9 @@ public class MakeCoffeeFunctionTest {
       double cmw = cm.GetCoffeeWater();
       double cmm = cm.GetCoffeeMilk();
       int count = cm.GetCoffeeCount();
-
-      cm.makecoffee();
-      
+      Scanner f = new Scanner(System.in);
+      cm.makecoffee(f);
+      f.close();
       double Ecmp = cmp;
       double Ecmw = cmw;
       double Ecmm = cmm;

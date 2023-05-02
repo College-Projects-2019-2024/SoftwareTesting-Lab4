@@ -1,14 +1,19 @@
 import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public class StartTest {
    CoffeeMachine cm;
    private ByteArrayInputStream in;
    private ByteArrayOutputStream out;
+   
    private String userInput = "";
 
    String initial = " ----------------------------------------------------------------\n"
@@ -37,7 +42,16 @@ public class StartTest {
       out = new ByteArrayOutputStream();
       PrintStream print = new PrintStream(out);
       System.setOut(print);
+
+      
    }
+
+   
+
+   // @AfterEach
+   // void finish(){
+   //    f.close();
+   // }
 
 
    @Test
@@ -46,9 +60,10 @@ public class StartTest {
 
     in = new ByteArrayInputStream(userInput.getBytes());
     System.setIn(in);
-
-    cm.start();
-
+   Scanner f = new Scanner(System.in);
+    cm.start(f);
+    f.close();
+    
 
     String var = "------------- Status ------------\n" + "Available Coffee Power(Gram) " + cm.GetCoffeePowder()
         +"\nAvailable Milk(Liter) " + cm.GetCoffeeMilk() + "\nAvailable Water(Liter) " + cm.GetCoffeeWater() +
@@ -69,8 +84,10 @@ public class StartTest {
     in = new ByteArrayInputStream(userInput.getBytes());
     System.setIn(in);
 
-    cm.start();
-
+    Scanner f = new Scanner(System.in);
+    cm.start(f);
+    f.close();
+    
 
     String actual = out.toString();
 
@@ -98,7 +115,10 @@ public class StartTest {
       in = new ByteArrayInputStream(userInput.getBytes());
       System.setIn(in);
 
-      cm.start();
+      Scanner f = new Scanner(System.in);
+      cm.start(f);
+      f.close();
+      
 
       double cmp = cm.GetCoffeePowder();
       double cmw = cm.GetCoffeeWater();
@@ -110,48 +130,36 @@ public class StartTest {
 
    }
 
-   // @Test
-   // public void test4(){
-   //    userInput = "4\n1\n6";
-
-   //    in = new ByteArrayInputStream(userInput.getBytes());
-   //    System.setIn(in);
-
-   //    cm.start();
-   //    cm.SetIngredient();
-
-   //    double cmp = cm.GetCoffeePowder();
-   //    double cmw = cm.GetCoffeeWater();
-   //    double cmm = cm.GetCoffeeMilk();
-   //    int count = cm.GetCoffeeCount();
-
-   //    cm.BlackCoffee();
-
-   //    double Ecmp = cmp - 10;
-   //    double Ecmw = cmw - 0.2;
-   //    double Ecmm = cmm;
-   //    int Ecount = count + 1;
-
-   //    assertEquals("Error", Ecmp, cm.GetCoffeePowder(),0.0);
-   //    assertEquals("Error", Ecmw, cm.GetCoffeeWater(),0.0);
-   //    assertEquals("Error", Ecmm, cm.GetCoffeeMilk(),0.0);
-   //    assertEquals("Error", Ecount, cm.GetCoffeeCount());
-
-   // }
-
    @Test
-   public void test5(){
-      userInput = "3\n6";
+   public void test4(){
+      userInput = "4\n1\n6";
 
       in = new ByteArrayInputStream(userInput.getBytes());
       System.setIn(in);
 
-      cm.start();
       cm.SetIngredient();
-      cm.BlackCoffee();
 
+      double cmp = cm.GetCoffeePowder();
+      double cmw = cm.GetCoffeeWater();
+      double cmm = cm.GetCoffeeMilk();
       int count = cm.GetCoffeeCount();
 
-      assertEquals("Error", 1, count);
+      
+      Scanner f = new Scanner(System.in);
+      cm.start(f);
+      f.close();
+      
+
+      double Ecmp = cmp - 10;
+      double Ecmw = cmw - 0.2;
+      double Ecmm = cmm;
+      int Ecount = count + 1;
+
+      assertEquals("Error", Ecmp, cm.GetCoffeePowder(),0.0);
+      assertEquals("Error", Ecmw, cm.GetCoffeeWater(),0.0);
+      assertEquals("Error", Ecmm, cm.GetCoffeeMilk(),0.0);
+      assertEquals("Error", Ecount, cm.GetCoffeeCount());
+
    }
+
 }
