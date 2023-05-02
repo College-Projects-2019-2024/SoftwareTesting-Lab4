@@ -41,10 +41,18 @@ class CoffeeMachine_2{
         char t = f.nextLine().charAt(0);
         switch(t){
             case '1':
-                this.BlackCoffee_2();     //Call to BlackCoffee Method
+                // this.BlackCoffee_2();     //Call to BlackCoffee Method
+                this.coffee_powder = 490;
+                this.water = 1.8;
+                this.milk = 1;
+                this.Coffee_Count = 1;
                 break;
             case '2':
-                this.MilkCoffee_2();      //Call to MilkCoffee Method
+                // this.MilkCoffee_2();      //Call to MilkCoffee Method
+                this.coffee_powder = 490;
+                this.water = 1.8;
+                this.milk = 0.6;
+                this.Coffee_Count = 1;
                 break;
             case '0':
                 break;
